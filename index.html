@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / Meta -->
+  <title>openSpeakVoice — Voz a Texto Instantáneo para Windows</title>
+  <meta name="description" content="Widget de escritorio que convierte tu voz en texto en tiempo real. Presiona F8, habla, y el texto se pega automáticamente en cualquier aplicación de Windows." />
+  <meta name="keywords" content="voz a texto, speech to text, dictado Windows, Whisper, Groq, transcripción" />
+  <meta name="author" content="openSpeakVoice" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="openSpeakVoice — Voz a Texto Instantáneo" />
+  <meta property="og:description" content="Presiona F8, habla, y el texto aparece donde lo necesitas. Gratis y Open Source." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://openspeakvoice.vercel.app" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="openSpeakVoice — Voz a Texto Instantáneo" />
+  <meta name="twitter:description" content="Widget de voz a texto ultra rápido para Windows. Gratis y Open Source." />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234F6EF7'/><path d='M16 6a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0v-6a4 4 0 0 0-4-4z' fill='white'/><path d='M10 14v2a6 6 0 0 0 12 0v-2' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/><line x1='16' y1='22' x2='16' y2='26' stroke='white' stroke-width='2' stroke-linecap='round'/><line x1='12' y1='26' x2='20' y2='26' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="#" class="nav-logo" aria-label="openSpeakVoice home">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </div>
+          openSpeakVoice
+        </a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="#features" data-i18n="nav.features"></a></li>
+          <li><a href="#how-it-works" data-i18n="nav.howItWorks"></a></li>
+          <li><a href="#languages" data-i18n="nav.languages"></a></li>
+          <li><a href="#download" data-i18n="nav.download"></a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="lang-switcher" role="group" aria-label="Language selector">
+            <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+            <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+            <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+          </div>
+
+          <a href="https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.2.0/VoiceToText-v1.2.0.zip"
+             class="btn-nav-cta" aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="nav.download"></span>
+          </a>
+
+          <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="hero" id="hero" role="banner">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left: Copy -->
+        <div class="hero-content reveal">
+          <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span data-i18n="hero.badge"></span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="hero.title"></span>
+            <span class="hero-title-accent" data-i18n="hero.titleAccent"></span>
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero.subtitle"></p>
+
+          <div class="hero-translate-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span data-i18n="hero.translateBadge"></span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.2.0/VoiceToText-v1.2.0.zip"
+               class="btn-primary" id="hero-download-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span data-i18n="hero.cta"></span>
+            </a>
+
+            <a href="https://github.com/sergio-dev1-py/openSpeakVoice" target="_blank" rel="noopener" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span data-i18n="hero.github"></span>
+            </a>
+          </div>
+          <div class="btn-sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span data-i18n="hero.ctaSub"></span>
+          </div>
+        </div>
+
+        <!-- Right: Widget Demo -->
+        <div class="hero-visual reveal" style="--delay:150ms">
+          <div class="widget-demo-wrapper">
+            <!-- ambient rings -->
+            <div class="glow-ring" aria-hidden="true"></div>
+            <div class="glow-ring" aria-hidden="true"></div>
+            <div class="glow-ring" aria-hidden="true"></div>
+
+            <!-- Main widget -->
+            <div class="widget-demo idle" id="widget-demo" role="img" aria-label="Widget demo" tabindex="0">
+              <div class="widget-mic-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+              <div class="widget-info">
+                <div class="widget-label" id="widget-label" data-i18n="hero.widgetIdle"></div>
+              </div>
+              <div class="widget-waveform" aria-hidden="true">
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+                <div class="waveform-bar"></div>
+              </div>
+            </div>
+
+            <div class="widget-key-hint" aria-hidden="true">
+              <kbd class="kbd">F8</kbd>
+              <span style="color:var(--text-3);font-size:.78rem">→ speak → paste</span>
+            </div>
+
+            <!-- Floating decoration cards -->
+            <div class="deco-card" aria-hidden="true">
+              <span class="deco-icon">⚡</span>
+              <span>Groq Whisper</span>
+            </div>
+            <div class="deco-card" aria-hidden="true">
+              <span class="deco-icon">🔒</span>
+              <span>Offline mode</span>
+            </div>
+          </div>
+
+          <!-- Simulation demo -->
+          <div class="sim-demo reveal" style="--delay:250ms" aria-label="Simulación de funcionamiento">
+            <div class="sim-label" data-i18n="hero.simLabel"></div>
+            <div class="sim-input-wrap" id="sim-input-wrap">
+              <div class="sim-input" id="sim-input" contenteditable="false" aria-label="Input demo">
+                <span class="sim-placeholder" id="sim-placeholder" data-i18n="hero.simPlaceholder"></span>
+                <span class="sim-cursor" id="sim-cursor" style="display:none">|</span>
+                <span class="sim-text" id="sim-text"></span>
+              </div>
+              <div class="sim-mouse" id="sim-mouse" aria-hidden="true">
+                <svg viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 2L5 22L9 18L12 25L14 24L11 17L16 17L5 2Z" fill="#1a1a1a" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       STATS BAR
+  ══════════════════════════════════════════ -->
+  <div class="stats-bar" aria-label="Key statistics">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item reveal">
+          <div class="stat-value">99+</div>
+          <div class="stat-label" data-i18n="stats.languagesLabel"></div>
+        </div>
+        <div class="stat-item reveal" style="--delay:80ms">
+          <div class="stat-value" data-i18n="stats.speed"></div>
+          <div class="stat-label" data-i18n="stats.speedLabel"></div>
+        </div>
+        <div class="stat-item reveal" style="--delay:160ms">
+          <div class="stat-value" data-i18n="stats.offline"></div>
+          <div class="stat-label" data-i18n="stats.offlineLabel"></div>
+        </div>
+        <div class="stat-item reveal" style="--delay:240ms">
+          <div class="stat-value" data-i18n="stats.free"></div>
+          <div class="stat-label" data-i18n="stats.freeLabel"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════ -->
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="container">
+      <div class="features-header reveal">
+        <div class="section-label" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-i18n="features.sectionLabel"></span>
+        </div>
+        <h2 id="features-title" data-i18n="features.title"></h2>
+        <p data-i18n="features.subtitle"></p>
+      </div>
+      <div id="features-grid" role="list" aria-label="Features">
+        <!-- Dynamically rendered by i18n.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════════════════ -->
+  <section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="howItWorks.sectionLabel"></span>
+        </div>
+        <h2 id="how-title" data-i18n="howItWorks.title"></h2>
+      </div>
+      <div id="steps-container" role="list" aria-label="How it works steps">
+        <!-- Dynamically rendered by i18n.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       LANGUAGES
+  ══════════════════════════════════════════ -->
+  <section class="languages" id="languages" aria-labelledby="lang-title">
+    <div class="container">
+      <div class="languages-header reveal">
+        <div class="section-label" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span data-i18n="languages.sectionLabel"></span>
+        </div>
+        <h2 id="lang-title" data-i18n="languages.title"></h2>
+        <p data-i18n="languages.subtitle"></p>
+      </div>
+
+      <div class="languages-grid reveal" style="--delay:100ms" role="list" aria-label="Supported languages">
+        <div class="lang-chip reveal" style="--delay:0ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+          <span class="lang-name">Español</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:50ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇺🇸</span>
+          <span class="lang-name">English</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:100ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇧🇷</span>
+          <span class="lang-name">Português</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:150ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+          <span class="lang-name">Français</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:200ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇩🇪</span>
+          <span class="lang-name">Deutsch</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:250ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇮🇹</span>
+          <span class="lang-name">Italiano</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:300ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇯🇵</span>
+          <span class="lang-name">日本語</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:350ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇰🇷</span>
+          <span class="lang-name">한국어</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:400ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇨🇳</span>
+          <span class="lang-name">中文</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:450ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇷🇺</span>
+          <span class="lang-name">Русский</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:500ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇵🇱</span>
+          <span class="lang-name">Polski</span>
+        </div>
+        <div class="lang-chip reveal" style="--delay:550ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🇹🇷</span>
+          <span class="lang-name">Türkçe</span>
+        </div>
+        <div class="lang-chip lang-chip-more reveal" style="--delay:600ms" role="listitem">
+          <span class="lang-flag" aria-hidden="true">🌐</span>
+          <span class="lang-name" data-i18n="languages.moreChip"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PLATFORMS — Coming Soon
+  ══════════════════════════════════════════ -->
+  <section class="platforms" id="platforms" aria-labelledby="platforms-title">
+    <div class="container">
+      <div class="platforms-header reveal">
+        <div class="section-label" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span data-i18n="platforms.sectionLabel"></span>
+        </div>
+        <h2 id="platforms-title" data-i18n="platforms.title"></h2>
+        <p data-i18n="platforms.subtitle"></p>
+      </div>
+
+      <div class="platforms-list reveal" style="--delay:100ms">
+        <div class="platform-item" style="--delay:0ms">
+          <div class="platform-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+              <path d="M7 8l3 3-3 3"/>
+              <line x1="13" y1="14" x2="17" y2="14"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 data-i18n="platforms.linux"></h3>
+            <p data-i18n="platforms.linuxDesc"></p>
+          </div>
+          <span class="platform-badge" data-i18n="platforms.badge"></span>
+        </div>
+
+        <div class="platform-item" style="--delay:80ms">
+          <div class="platform-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+              <path d="M6 8h.01"/>
+              <path d="M18 8h.01"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 data-i18n="platforms.mac"></h3>
+            <p data-i18n="platforms.macDesc"></p>
+          </div>
+          <span class="platform-badge" data-i18n="platforms.badge"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       DOWNLOAD
+  ══════════════════════════════════════════ -->
+  <section class="download" id="download" aria-labelledby="download-title">
+    <div class="container">
+      <div class="download-inner">
+        <div class="section-label reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="download.sectionLabel"></span>
+        </div>
+
+        <h2 id="download-title" class="reveal" style="--delay:60ms;color:white" data-i18n="download.title"></h2>
+        <p class="reveal" style="--delay:120ms" data-i18n="download.subtitle"></p>
+
+        <div class="download-card reveal" style="--delay:180ms">
+          <div class="download-meta">
+            <div class="download-meta-item">
+              <div class="download-meta-value" data-i18n="download.size"></div>
+              <div class="download-meta-label" data-i18n="download.sizeLabel"></div>
+            </div>
+            <div class="download-meta-item" style="padding:0 24px;border-left:1px solid rgba(255,255,255,.1);border-right:1px solid rgba(255,255,255,.1)">
+              <div class="download-meta-value">v1.2.0</div>
+              <div class="download-meta-label">Latest release</div>
+            </div>
+            <div class="download-meta-item">
+              <div class="download-meta-value" data-i18n="download.noInstall"></div>
+              <div class="download-meta-label" data-i18n="download.noInstallLabel"></div>
+            </div>
+          </div>
+
+          <a href="https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.2.0/VoiceToText-v1.2.0.zip"
+             class="btn-download" id="main-download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="download.cta"></span>
+          </a>
+
+          <p class="download-sub" data-i18n="download.ctaSub"></p>
+
+          <a href="https://github.com/sergio-dev1-py/openSpeakVoice" target="_blank" rel="noopener" class="btn-github-dl">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-i18n="download.github"></span>
+          </a>
+
+          <div class="download-req">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span data-i18n="download.requirements"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-brand">
+            <div class="footer-brand-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </div>
+            openSpeakVoice
+          </div>
+          <p class="footer-tagline" data-i18n="footer.tagline"></p>
+        </div>
+
+        <ul class="footer-links" role="list">
+          <li>
+            <a href="https://github.com/sergio-dev1-py/openSpeakVoice" target="_blank" rel="noopener" data-i18n="footer.links.github"></a>
+          </li>
+          <li>
+            <a href="https://github.com/sergio-dev1-py/openSpeakVoice/issues" target="_blank" rel="noopener" data-i18n="footer.links.issues"></a>
+          </li>
+          <li>
+            <a href="https://github.com/sergio-dev1-py/openSpeakVoice/releases" target="_blank" rel="noopener" data-i18n="footer.links.releases"></a>
+          </li>
+        </ul>
+
+        <p class="footer-copy">
+          © <span id="footer-year"></span> openSpeakVoice. <span data-i18n="footer.rights"></span>
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts — i18n first, then main -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Set current year
+    document.getElementById("footer-year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

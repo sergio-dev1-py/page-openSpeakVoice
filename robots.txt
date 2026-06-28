@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://openspeakvoice.vercel.app/sitemap.xml
