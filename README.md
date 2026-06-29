@@ -1,78 +1,29 @@
-# openSpeakVoice — Landing Page
+# openSpeakVoice
 
-Landing page profesional para **openSpeakVoice**, el widget de voz a texto para Windows.
+Widget de escritorio que convierte tu voz en texto en tiempo real. Presiona F8, habla, y el texto se pega automáticamente en cualquier aplicación de Windows.
 
-## 🚀 Stack
+## Características
 
-- **HTML5** semántico y accesible
-- **CSS3** con variables, Grid, animaciones suaves
-- **JavaScript vanilla** — zero dependencias, carga ultra rápida
-- **i18n propio** — detección automática y cambio de idioma (ES / EN / PT)
-- **Vercel** — despliegue instantáneo con headers de caché optimizados
+- **Atajo global F8** — Activa la grabación desde cualquier aplicación con una sola tecla
+- **Groq Whisper API** — Transcripción en la nube ultra rápida con whisper-large-v3
+- **Modo offline** — Usa modelos Whisper locales sin internet (tiny → large-v3)
+- **Traducción automática** — Habla en tu idioma y obtén el texto traducido al idioma destino
+- **Widget flotante** — Siempre visible sobre tus ventanas, diseño compacto que no interrumpe tu flujo
+- **99+ idiomas** — Transcripción y traducción en los más de 99 idiomas soportados por Whisper
+- **Doble API Key** — Rotación automática entre 2 claves Groq para hasta 40 peticiones por minuto
 
-## 📁 Estructura
+## Requisitos
 
-```
-openSpeakVoice-landing/
-├── index.html              # Página principal
-├── vercel.json             # Config de Vercel (caché, headers, seguridad)
-├── robots.txt              # SEO
-├── README.md
-└── assets/
-    ├── css/
-    │   └── styles.css      # Todos los estilos
-    └── js/
-        ├── i18n.js         # Traducciones + detección de idioma
-        └── main.js         # Animaciones, widget demo, interacciones
-```
+- Windows 10 o superior
 
-## 🌍 Idiomas
+## Descarga
 
-El sitio detecta automáticamente el idioma del navegador del usuario:
-- **Español** (default)
-- **English**
-- **Português**
+Última versión: **v1.3.0**
 
-El usuario también puede cambiar manualmente con los botones ES / EN / PT en la navbar.
+[Descargar openSpeakVoice](https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.3.0/VoiceToText-v1.3.0.zip)
 
-## 🎨 Diseño
+También disponible en [GitHub](https://github.com/sergio-dev1-py/openSpeakVoice).
 
-- Fondo blanco limpio con acentos azul (`#4F6EF7`) y verde (`#22C55E`)
-- Tipografía **Inter** para legibilidad óptima
-- Widget animado interactivo en el hero
-- Animaciones de scroll suave con `IntersectionObserver`
-- Totalmente responsive (mobile, tablet, desktop)
-- Respeta `prefers-reduced-motion`
+## Licencia
 
-## ⚡ Deploy en Vercel
-
-### Opción 1 — Desde GitHub (recomendado)
-
-1. Sube este repositorio a GitHub
-2. Ve a [vercel.com](https://vercel.com) → New Project
-3. Importa el repositorio
-4. Framework: **Other** (no framework)
-5. Build command: *(dejar vacío)*
-6. Output directory: *(dejar vacío o `.`)*
-7. Click **Deploy**
-
-### Opción 2 — Vercel CLI
-
-```bash
-npm i -g vercel
-cd openSpeakVoice-landing
-vercel
-```
-
-## 📦 Performance
-
-- Sin frameworks ni bundlers → **0ms build time**
-- Fuentes Google con `preconnect` → carga rápida
-- Assets con caché de 1 año en Vercel
-- HTML con caché `must-revalidate` para actualizaciones inmediatas
-- Animaciones con `transform` + `opacity` → 60fps sin jank
-
-## 🔗 Links
-
-- **Producto**: [openSpeakVoice en GitHub](https://github.com/sergio-dev1-py/openSpeakVoice)
-- **Descarga**: [v1.2.0](https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.2.0/VoiceToText-v1.2.0.zip)
+Gratis y Open Source.
