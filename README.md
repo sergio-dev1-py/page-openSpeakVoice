@@ -20,7 +20,7 @@ Widget de escritorio que convierte tu voz en texto en tiempo real. Presiona F8, 
 
 Última versión: **v1.4.0**
 
-[Descargar openSpeakVoice](https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.4.0/VoiceToText-v1.4.0.zip)
+[Descargar openSpeakVoice](https://github.com/sergio-dev1-py/openSpeakVoice/releases/download/v1.4.0/VoiceToTextWidget_v1.4.0.zip)
 
 También disponible en [GitHub](https://github.com/sergio-dev1-py/openSpeakVoice).
 
